@@ -116,5 +116,14 @@ class G01Listener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by G01Parser#endTurtle.
+    def enterEndTurtle(self, ctx:G01Parser.EndTurtleContext):
+        pass
+
+    # Exit a parse tree produced by G01Parser#endTurtle.
+    def exitEndTurtle(self, ctx:G01Parser.EndTurtleContext):
+        pass
+
+
 
 del G01Parser

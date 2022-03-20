@@ -11,20 +11,20 @@ else:
 
 def serializedATN():
     with StringIO() as buf:
-        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\20")
-        buf.write("\"\4\2\t\2\4\3\t\3\3\2\3\2\5\2\t\n\2\3\3\3\3\3\3\3\3\3")
+        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\21")
+        buf.write("#\4\2\t\2\4\3\t\3\3\2\3\2\5\2\t\n\2\3\3\3\3\3\3\3\3\3")
         buf.write("\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3")
-        buf.write("\3\3\3\3\3\3\5\3 \n\3\3\3\2\2\4\2\4\2\2\2*\2\b\3\2\2\2")
-        buf.write("\4\37\3\2\2\2\6\t\5\4\3\2\7\t\3\2\2\2\b\6\3\2\2\2\b\7")
-        buf.write("\3\2\2\2\t\3\3\2\2\2\n\13\7\3\2\2\13\f\7\16\2\2\f \7\16")
-        buf.write("\2\2\r\16\7\4\2\2\16\17\7\16\2\2\17 \7\16\2\2\20\21\7")
-        buf.write("\5\2\2\21\22\7\16\2\2\22 \7\16\2\2\23\24\7\6\2\2\24 \7")
-        buf.write("\17\2\2\25\26\7\7\2\2\26 \7\17\2\2\27 \7\b\2\2\30 \7\t")
-        buf.write("\2\2\31 \7\n\2\2\32 \7\13\2\2\33\34\7\f\2\2\34 \7\16\2")
-        buf.write("\2\35\36\7\r\2\2\36 \7\16\2\2\37\n\3\2\2\2\37\r\3\2\2")
-        buf.write("\2\37\20\3\2\2\2\37\23\3\2\2\2\37\25\3\2\2\2\37\27\3\2")
-        buf.write("\2\2\37\30\3\2\2\2\37\31\3\2\2\2\37\32\3\2\2\2\37\33\3")
-        buf.write("\2\2\2\37\35\3\2\2\2 \5\3\2\2\2\4\b\37")
+        buf.write("\3\3\3\3\3\3\3\3\5\3!\n\3\3\3\2\2\4\2\4\2\2\2,\2\b\3\2")
+        buf.write("\2\2\4 \3\2\2\2\6\t\5\4\3\2\7\t\3\2\2\2\b\6\3\2\2\2\b")
+        buf.write("\7\3\2\2\2\t\3\3\2\2\2\n\13\7\3\2\2\13\f\7\17\2\2\f!\7")
+        buf.write("\17\2\2\r\16\7\4\2\2\16\17\7\17\2\2\17!\7\17\2\2\20\21")
+        buf.write("\7\5\2\2\21\22\7\17\2\2\22!\7\17\2\2\23\24\7\6\2\2\24")
+        buf.write("!\7\20\2\2\25\26\7\7\2\2\26!\7\20\2\2\27!\7\b\2\2\30!")
+        buf.write("\7\t\2\2\31!\7\n\2\2\32!\7\13\2\2\33\34\7\f\2\2\34!\7")
+        buf.write("\17\2\2\35\36\7\r\2\2\36!\7\17\2\2\37!\7\16\2\2 \n\3\2")
+        buf.write("\2\2 \r\3\2\2\2 \20\3\2\2\2 \23\3\2\2\2 \25\3\2\2\2 \27")
+        buf.write("\3\2\2\2 \30\3\2\2\2 \31\3\2\2\2 \32\3\2\2\2 \33\3\2\2")
+        buf.write("\2 \35\3\2\2\2 \37\3\2\2\2!\5\3\2\2\2\4\b ")
         return buf.getvalue()
 
 
@@ -39,12 +39,12 @@ class G01Parser ( Parser ):
     sharedContextCache = PredictionContextCache()
 
     literalNames = [ "<INVALID>", "'G01'", "'print'", "'G28'", "'GC'", "'GFC'", 
-                     "'PU'", "'PD'", "'BF'", "'EF'", "'RT'", "'SETH'" ]
+                     "'PU'", "'PD'", "'BF'", "'EF'", "'RT'", "'SETH'", "'ET'" ]
 
     symbolicNames = [ "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
                       "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
                       "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                      "NUMBER", "LETTER", "WS" ]
+                      "<INVALID>", "NUMBER", "LETTER", "WS" ]
 
     RULE_start = 0
     RULE_expr = 1
@@ -63,9 +63,10 @@ class G01Parser ( Parser ):
     T__8=9
     T__9=10
     T__10=11
-    NUMBER=12
-    LETTER=13
-    WS=14
+    T__11=12
+    NUMBER=13
+    LETTER=14
+    WS=15
 
     def __init__(self, input:TokenStream, output:TextIO = sys.stdout):
         super().__init__(input, output)
@@ -115,7 +116,7 @@ class G01Parser ( Parser ):
             self.state = 6
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [G01Parser.T__0, G01Parser.T__1, G01Parser.T__2, G01Parser.T__3, G01Parser.T__4, G01Parser.T__5, G01Parser.T__6, G01Parser.T__7, G01Parser.T__8, G01Parser.T__9, G01Parser.T__10]:
+            if token in [G01Parser.T__0, G01Parser.T__1, G01Parser.T__2, G01Parser.T__3, G01Parser.T__4, G01Parser.T__5, G01Parser.T__6, G01Parser.T__7, G01Parser.T__8, G01Parser.T__9, G01Parser.T__10, G01Parser.T__11]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 4
                 self.expr()
@@ -377,6 +378,28 @@ class G01Parser ( Parser ):
                 return visitor.visitChildren(self)
 
 
+    class EndTurtleContext(ExprContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a G01Parser.ExprContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterEndTurtle" ):
+                listener.enterEndTurtle(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitEndTurtle" ):
+                listener.exitEndTurtle(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitEndTurtle" ):
+                return visitor.visitEndTurtle(self)
+            else:
+                return visitor.visitChildren(self)
+
+
     class BeginFillContext(ExprContext):
 
         def __init__(self, parser, ctx:ParserRuleContext): # actually a G01Parser.ExprContext
@@ -434,7 +457,7 @@ class G01Parser ( Parser ):
         localctx = G01Parser.ExprContext(self, self._ctx, self.state)
         self.enterRule(localctx, 2, self.RULE_expr)
         try:
-            self.state = 29
+            self.state = 30
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [G01Parser.T__0]:
@@ -522,6 +545,12 @@ class G01Parser ( Parser ):
                 self.match(G01Parser.T__10)
                 self.state = 28
                 localctx.angle = self.match(G01Parser.NUMBER)
+                pass
+            elif token in [G01Parser.T__11]:
+                localctx = G01Parser.EndTurtleContext(self, localctx)
+                self.enterOuterAlt(localctx, 12)
+                self.state = 29
+                self.match(G01Parser.T__11)
                 pass
             else:
                 raise NoViableAltException(self)

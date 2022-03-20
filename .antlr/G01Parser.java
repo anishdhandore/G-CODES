@@ -17,7 +17,7 @@ public class G01Parser extends Parser {
 		new PredictionContextCache();
 	public static final int
 		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9, 
-		T__9=10, T__10=11, NUMBER=12, LETTER=13, WS=14;
+		T__9=10, T__10=11, T__11=12, NUMBER=13, LETTER=14, WS=15;
 	public static final int
 		RULE_start = 0, RULE_expr = 1;
 	private static String[] makeRuleNames() {
@@ -30,14 +30,14 @@ public class G01Parser extends Parser {
 	private static String[] makeLiteralNames() {
 		return new String[] {
 			null, "'G01'", "'print'", "'G28'", "'GC'", "'GFC'", "'PU'", "'PD'", "'BF'", 
-			"'EF'", "'RT'", "'SETH'"
+			"'EF'", "'RT'", "'SETH'", "'ET'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
 			null, null, null, null, null, null, null, null, null, null, null, null, 
-			"NUMBER", "LETTER", "WS"
+			null, "NUMBER", "LETTER", "WS"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -119,6 +119,7 @@ public class G01Parser extends Parser {
 			case T__8:
 			case T__9:
 			case T__10:
+			case T__11:
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(4);
@@ -203,6 +204,9 @@ public class G01Parser extends Parser {
 		public TerminalNode LETTER() { return getToken(G01Parser.LETTER, 0); }
 		public SpecifyFillColorContext(ExprContext ctx) { copyFrom(ctx); }
 	}
+	public static class EndTurtleContext extends ExprContext {
+		public EndTurtleContext(ExprContext ctx) { copyFrom(ctx); }
+	}
 	public static class BeginFillContext extends ExprContext {
 		public BeginFillContext(ExprContext ctx) { copyFrom(ctx); }
 	}
@@ -220,7 +224,7 @@ public class G01Parser extends Parser {
 		ExprContext _localctx = new ExprContext(_ctx, getState());
 		enterRule(_localctx, 2, RULE_expr);
 		try {
-			setState(29);
+			setState(30);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case T__0:
@@ -331,6 +335,14 @@ public class G01Parser extends Parser {
 				((SetOrientationContext)_localctx).angle = match(NUMBER);
 				}
 				break;
+			case T__11:
+				_localctx = new EndTurtleContext(_localctx);
+				enterOuterAlt(_localctx, 12);
+				{
+				setState(29);
+				match(T__11);
+				}
+				break;
 			default:
 				throw new NoViableAltException(this);
 			}
@@ -347,17 +359,17 @@ public class G01Parser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\20\"\4\2\t\2\4\3"+
-		"\t\3\3\2\3\2\5\2\t\n\2\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3"+
-		"\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\5\3 \n\3\3\3\2\2\4\2\4\2\2\2*\2\b"+
-		"\3\2\2\2\4\37\3\2\2\2\6\t\5\4\3\2\7\t\3\2\2\2\b\6\3\2\2\2\b\7\3\2\2\2"+
-		"\t\3\3\2\2\2\n\13\7\3\2\2\13\f\7\16\2\2\f \7\16\2\2\r\16\7\4\2\2\16\17"+
-		"\7\16\2\2\17 \7\16\2\2\20\21\7\5\2\2\21\22\7\16\2\2\22 \7\16\2\2\23\24"+
-		"\7\6\2\2\24 \7\17\2\2\25\26\7\7\2\2\26 \7\17\2\2\27 \7\b\2\2\30 \7\t\2"+
-		"\2\31 \7\n\2\2\32 \7\13\2\2\33\34\7\f\2\2\34 \7\16\2\2\35\36\7\r\2\2\36"+
-		" \7\16\2\2\37\n\3\2\2\2\37\r\3\2\2\2\37\20\3\2\2\2\37\23\3\2\2\2\37\25"+
-		"\3\2\2\2\37\27\3\2\2\2\37\30\3\2\2\2\37\31\3\2\2\2\37\32\3\2\2\2\37\33"+
-		"\3\2\2\2\37\35\3\2\2\2 \5\3\2\2\2\4\b\37";
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\21#\4\2\t\2\4\3\t"+
+		"\3\3\2\3\2\5\2\t\n\2\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3"+
+		"\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\5\3!\n\3\3\3\2\2\4\2\4\2\2\2,\2"+
+		"\b\3\2\2\2\4 \3\2\2\2\6\t\5\4\3\2\7\t\3\2\2\2\b\6\3\2\2\2\b\7\3\2\2\2"+
+		"\t\3\3\2\2\2\n\13\7\3\2\2\13\f\7\17\2\2\f!\7\17\2\2\r\16\7\4\2\2\16\17"+
+		"\7\17\2\2\17!\7\17\2\2\20\21\7\5\2\2\21\22\7\17\2\2\22!\7\17\2\2\23\24"+
+		"\7\6\2\2\24!\7\20\2\2\25\26\7\7\2\2\26!\7\20\2\2\27!\7\b\2\2\30!\7\t\2"+
+		"\2\31!\7\n\2\2\32!\7\13\2\2\33\34\7\f\2\2\34!\7\17\2\2\35\36\7\r\2\2\36"+
+		"!\7\17\2\2\37!\7\16\2\2 \n\3\2\2\2 \r\3\2\2\2 \20\3\2\2\2 \23\3\2\2\2"+
+		" \25\3\2\2\2 \27\3\2\2\2 \30\3\2\2\2 \31\3\2\2\2 \32\3\2\2\2 \33\3\2\2"+
+		"\2 \35\3\2\2\2 \37\3\2\2\2!\5\3\2\2\2\4\b ";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

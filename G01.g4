@@ -13,6 +13,7 @@ expr     : 'G01' x_cord=NUMBER y_cord=NUMBER #drawlineExpr
          | 'EF' #endFill
          | 'RT' angle=NUMBER #goRight
          | 'SETH' angle=NUMBER #setOrientation
+         | 'ET' #endTurtle
          ;
 NUMBER : '-'?('0' .. '9') + ('.' ('0' .. '9') +)? ;
 LETTER : ('a' .. 'z')+;
